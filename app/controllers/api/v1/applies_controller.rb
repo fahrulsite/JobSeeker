@@ -35,9 +35,14 @@ class Api::V1::AppliesController < ApplicationController
 
   # DELETE /applies/1
   def destroy
-    @apply.destroy
-  end
-
+    @apply = Apply.find(params[:id])
+    if @apply
+        @apply.destroy
+        render json:{messages:'Apply successfully deleted' }, status:200
+    else
+        render error:{error:'Unable to delete Apply.'}, status:400
+    end
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_apply

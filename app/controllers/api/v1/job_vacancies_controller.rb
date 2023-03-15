@@ -36,7 +36,13 @@ class Api::V1::JobVacanciesController < ApplicationController
   
     # DELETE /job_vacancies/1
     def destroy
-      @job_vacancy.destroy
+        @job_vacancy = JobVacancy.find(params[:id])
+        if @job_vacancy
+            @job_vacancy.destroy
+            render json:{messages:'Job Vacancy successfully deleted' }, status:200
+        else
+            render error:{error:'Unable to delete Job Vacancy.'}, status:400
+        end
     end
   
     private
