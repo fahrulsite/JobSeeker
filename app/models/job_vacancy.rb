@@ -1,6 +1,6 @@
 class JobVacancy < ApplicationRecord
 
-    has_many: applys
+    has_many :apply
 
     validates :user_id, presence: true
     validates :position_name, presence: true
@@ -19,4 +19,5 @@ class JobVacancy < ApplicationRecord
             close_date: self.close_date,
             created_at: self.created_at,
         }
+    end
 end

@@ -7,7 +7,7 @@ class Apply < ApplicationRecord
     validates :job_vacancy_id, presence: true
     validates :status, presence: true
 
-    enum status
+    enum status:
     {
         process: 0,
         accepted: 1,
