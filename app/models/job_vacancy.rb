@@ -1,8 +1,9 @@
 class JobVacancy < ApplicationRecord
 
-    has_many :apply
+    has_many :applicants, class_name:"Apply", foreign_key:"applicant_id"
+    belongs_to :job_vacancies, class_name: "User", foreign_key: "recruiter_id", optional: true
 
-    validates :user_id, presence: true
+    validates :recruiter_id, presence: true
     validates :position_name, presence: true
     validates :description, presence: true
     validates :requirement, presence: true
@@ -12,7 +13,7 @@ class JobVacancy < ApplicationRecord
     def data
         {
             id: self.id,
-            user_id: self.user_id,
+            recruiter_id: self.recruiter_id,
             position_name: self.position_name,
             description: self.description,
             requirement: self.requirement,

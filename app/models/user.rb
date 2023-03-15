@@ -1,10 +1,12 @@
 class User < ApplicationRecord
     has_secure_password
-    has_many :applies
+    has_many :applicants, class_name:"Apply", foreign_key:"applicant_id", dependent: :destroy
+    has_many :job_vacancies, class_name: "JobVacancy", foreign_key: "recruiter_id", dependent: :destroy
+
     # validates :email, presence: true, length: { maximum: 255 },
     #                 format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
     #                 uniqueness: true
-    
+
     def data
         {
           id: self.id,

@@ -1,9 +1,9 @@
 class Apply < ApplicationRecord
 
-    belongs_to :user
-    belongs_to :job_vacancy
+    belongs_to :applicant, class_name:"User", foreign_key:"applicant_id", optional:true
+    belongs_to :job_vacancy, class_name:"JobVacancy", foreign_key: "job_vacancy_id"
 
-    validates :user_id, presence: true
+    validates :applicant_id, presence: true
     validates :job_vacancy_id, presence: true
     validates :status, presence: true
 
@@ -14,11 +14,10 @@ class Apply < ApplicationRecord
         rejected: 2,
     }
 
-    
     def data
         {
             id: self.id,
-            user_id: self.user_id,
+            applicant_id: self.applicant_id,
             job_vacancy_id: self.job_vacancy_id,
             status: self.status,
             created_at: self.created_at,

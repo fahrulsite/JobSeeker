@@ -54,6 +54,6 @@ end
 
     # Only allow a trusted parameter "white list" through.
     def apply_params
-      params.require(:apply).permit(:user_id, :job_vacancy_id, :status)
+      params.require(:apply).permit(:applicant_id, :job_vacancy_id, :status)
     end
 end

@@ -14,4 +14,34 @@ ActiveRecord::Schema[7.0].define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "applies", force: :cascade do |t|
+    t.integer "applicant_id"
+    t.integer "job_vacancy_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_vacancies", force: :cascade do |t|
+    t.integer "recruiter_id"
+    t.string "position_name"
+    t.string "description"
+    t.string "requirement"
+    t.date "close_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.string "company"
+    t.string "address"
+    t.integer "role"
+    t.string "cv"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
