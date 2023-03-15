@@ -16,7 +16,7 @@ class Api::V1::JobVacanciesController < ApplicationController
   
     # POST /job_vacancies
     def create
-      @job_vacancy = Jobva.new(job_vacancy_params)
+      @job_vacancy = JobVacancy.new(job_vacancy_params)
   
       if @job_vacancy.save
         render json: @job_vacancy.data, status: :created

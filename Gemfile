@@ -48,4 +48,5 @@ end
 
 gem 'rails_admin'
 gem "sassc-rails"
+gem 'faker'
 
