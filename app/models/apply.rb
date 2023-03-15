@@ -15,7 +15,7 @@ class Apply < ApplicationRecord
     }
 
     
-    def new_attributes
+    def data
         {
             id: self.id,
             user_id: self.user_id,

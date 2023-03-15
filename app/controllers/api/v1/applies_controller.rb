@@ -1,15 +1,16 @@
 class Api::V1::AppliesController < ApplicationController
+    before_action :set_apply, only: [:show, :update, :destroy]
 
     # GET /applies
   def index
     @applies = Apply.all
 
-    render json: @applies.map { |apply| apply.new_attributes }
+    render json: @applies.map { |apply| apply.data }
   end
 
   # GET /applies/1
   def show
-    render json: @apply.new_attributes
+    render json: @apply.data
   end
 
   # POST /applies
@@ -17,7 +18,7 @@ class Api::V1::AppliesController < ApplicationController
     @apply = Apply.new(apply_params)
 
     if @apply.save
-      render json: @apply.new_attributes, status: :created, location: @apply
+      render json: @apply.data, status: :created
     else
       render json: @apply.errors, status: :unprocessable_entity
     end
@@ -26,7 +27,7 @@ class Api::V1::AppliesController < ApplicationController
   # PATCH/PUT /applies/1
   def update
     if @apply.update(apply_params)
-      render json: @apply.new_attributes
+      render json: @apply.data
     else
       render json: @apply.errors, status: :unprocessable_entity
     end
