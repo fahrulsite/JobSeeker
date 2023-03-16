@@ -1,5 +1,5 @@
 require 'jwt'
-require 'dotenv'
+require 'dotenv/env'
 # require 'dotenv-rails'
 
 module JsonWebToken
