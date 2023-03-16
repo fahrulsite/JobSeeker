@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    # ip_before_action :authenticate_request, only: [:create,]
+    
+    skip_before_action :authenticate_request, only: [:create, :login]
     before_action :set_user, only: [:show, :update, :destroy]
 
     def index
@@ -30,6 +31,19 @@ class Api::V1::UsersController < ApplicationController
             render json: @user.errors, status: :unprocessable_entity
         end
     end
+
+    def login
+        @user = User.find_by(email: params[:email])
+        if @user && @user&.authenticate(params[:password])
+          token = JsonWebToken.encode(user_id: @user.id)
+          render json: {
+            user: @user.data,
+            token: token,
+          }
+        else
+          render json: { error: "Invalid username or password" }, status: :unauthorized
+        end
+      end
 
     def destroy
         @user = User.find(params[:id])

@@ -4,13 +4,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  
   namespace :api do
     namespace :v1 do
       resources :users
       resources :applies
       resources :job_vacancies
       post 'login', to: 'users#login'
-
+      
     end
   end
 end
