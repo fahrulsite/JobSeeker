@@ -6,6 +6,7 @@ class CreateJobVacancies < ActiveRecord::Migration[7.0]
       t.string :description
       t.string :requirement
       t.date :close_date
+      t.integer :status
       t.timestamps
     end
   end

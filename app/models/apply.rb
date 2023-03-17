@@ -17,8 +17,8 @@ class Apply < ApplicationRecord
     def data
         {
             id: self.id,
-            applicant_id: self.applicant_id,
-            job_vacancy_id: self.job_vacancy_id,
+            applicant_id: self.applicant.name,
+            job_vacancy_id: self.job_vacancy.position_name,
             status: self.status,
             created_at: self.created_at,
         }
