@@ -15,6 +15,7 @@ class Api::V1::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
+            # Cloudinary::Uploader.cv_uploader(@user.cv.path, resource_type: :auto)
             render json: @user.data, status: :created
         else
             render json: @user.errors, status: :unprocessable_entity

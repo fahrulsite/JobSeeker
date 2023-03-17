@@ -1,0 +1,11 @@
+development:
+    cloud_name: "do2mbvd5h"
+    api_key: "484255125295421"
+    api_secret: "DXnyKswuCfJfUj1vDZDplH_13Tg"
+    secure: true
+    
+production:
+    cloud_name: "do2mbvd5h"
+    api_key: "484255125295421"
+    api_secret: "DXnyKswuCfJfUj1vDZDplH_13Tg"
+    secure: true

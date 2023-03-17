@@ -1,5 +1,5 @@
 require_relative "boot"
-
+require 'carrierwave'
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
@@ -10,6 +10,7 @@ module JobSeeker
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.cloudinary_url = "cloudinary://484255125295421:DXnyKswuCfJfUj1vDZDplH_13Tg@do2mbvd5h"
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -28,6 +29,7 @@ module JobSeeker
     config.middleware.use ActionDispatch::Flash
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Session::CookieStore, {:key=>"_job_seeker_session"}
+    
 
   end
 end

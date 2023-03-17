@@ -1,5 +1,4 @@
 class Api::V1::JobVacanciesController < ApplicationController
-
     before_action :set_job_vacancy, only: [:show, :update, :destroy]
 
     # GET /job_vacancies

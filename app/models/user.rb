@@ -7,6 +7,8 @@ class User < ApplicationRecord
     #                 format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
     #                 uniqueness: true
 
+    mount_uploader :cv, CvUploader
+
     def data
         {
           id: self.id,
